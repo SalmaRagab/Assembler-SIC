@@ -1,0 +1,54 @@
+  Line       Address       Label          Operation       Operand               OpCode               
+_____________________________________________________________________________________________________
+  5          1000          COPY           start           1000                                        
+  10         1000          FIRST          stl             RETARD                141033                
+  15         1003          CLOOP          jsub            RDREC                 482039                
+  20         1006                         lda             LENGTH                001036                
+  25         1009                         comp            ZERO                  281030                
+  30         100C                         jeq             ENDFIL                301015                
+  35         100F                         jsub            WRREC                 482061                
+  40         1012                         j               CLOOP                 3c1003                
+  45         1015          ENDFIL         lda             EOF                   00102a                
+  50         1018                         sta             BUFFER                0c1039                
+  55         101B                         lda             THREE                 00102d                
+  60         101E                         sta             LENGTH                0c1036                
+  65         1021                         jsub            WRREC                 482061                
+  70         1024                         ldl             RETARD                081033                
+  75         1027                         rsub                                  4c0000                
+  80         102A          EOF            byte            C'EOF'                454f46                
+  ERROR >>: [ 4542278] is OUT OF MEMORY!
+  85         102D          THREE          word            3                     000003                
+  90         1030          ZERO           word            0                     000000                
+  95         1033          RETARD         resw            1                                           
+  100        1036          LENGTH         resw            1                                           
+  105        1039          BUFFER         resb            4096                                        
+  110        2039          RDREC          ldx             ZERO                  041030                
+  115        203C                         lda             ZERO                  001030                
+  120        203F          RLOOP          td              INPUT                 e0205d                
+  125        2042                         jeq             RLOOP                 30203f                
+  130        2045                         rd              INPUT                 d8205d                
+  135        2048                         comp            ZERO                  281030                
+  140        204B                         jeq             EXIT                  302057                
+  145        204E                         stch            BUFFER,X              549039                
+  ERROR >>: [ 36921] is OUT OF MEMORY!
+  150        2051                         tix             MAXLEN                2c205e                
+  155        2054                         jlt             RLOOP                 38203f                
+  160        2057          EXIT           stx             LENGTH                101036                
+  165        205A                         rsub                                  4c0000                
+  170        205D          INPUT          byte            X'F1'                 f1                    
+  175        205E          MAXLEN         word            4096                  001000                
+  180        2061          WRREC          ldx             ZERO                  041030                
+  185        2064          WLOOP          td              OUTPUT                e02079                
+  190        2067                         jeq             WLOOP                 302064                
+  195        206A                         ldch            BUFFER,X              509039                
+  ERROR >>: [ 36921] is OUT OF MEMORY!
+  200        206D                         wd              OUTPUT                dc2079                
+  205        2070                         tix             LENGTH                2c1036                
+  210        2073                         jlt             WLOOP                 382064                
+  215        2076                         rsub                                  4c0000                
+  220        2079          OUTPUT         byte            X'05'                 05                    
+  225        207A                         end             FIRST                                       
+
+
+
+22:16:26

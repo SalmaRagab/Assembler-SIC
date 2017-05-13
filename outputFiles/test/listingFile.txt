@@ -1,0 +1,26 @@
+  Line       Address       Label          Operation       Operand               OpCode               
+_____________________________________________________________________________________________________
+  5          0             PROG12         start           0000                                        
+  10         0             P              jsub            COMPUTE               480006                
+  15         3             FIN2           j               FIN2                  3c0003                
+  20         6             COMPUTE        ldx             ZERO                  040027                
+  25         9             LOOP           td              INPUT                 e00030                
+  30         C                            jeq             LOOP                  300009                
+  35         F                            rd              INPUT                 d80030                
+  40         12                           comp            FOUR                  28002a                
+  45         15                           jeq             FIN                   300021                
+  50         18                           stch            BUFFER,X              548031                
+  55         1B                           tix             HUND                  2c002d                
+  60         1E                           jlt             LOOP                  380009                
+  65         21            FIN            stx             LENGTH                100095                
+  70         24                           rsub                                  4c0000                
+  75         27            ZERO           word            0                     000000                
+  80         2A            FOUR           word            4                     000004                
+  85         2D            HUND           word            100                   000064                
+  90         30            INPUT          byte            X'F3'                 f3                    
+  95         31            BUFFER         resb            100                                         
+  100        95            LENGTH         resw            1                                           
+  105        98                           end             P                                           
+
+
+

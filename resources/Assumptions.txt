@@ -1,0 +1,7 @@
+Assumptions:
+---------------
+1) start >> first line
+2) end >> last line
+3) max memory = 8000 (hexa)
+4)negative sign is considered a digit (only 4 digits are allowed)  
+5) blank line are ignored  and not considered errors

@@ -1,0 +1,47 @@
+Line no.            Location            Label               Mnemonic            Operand             Comment             
+------------------------------------------------------------------------------------------------------------------------
+1                   1000                COPY                START               1000                                
+2                   1000                FIRST               STL                 RETARD                            
+3                   1003                CLOOP               JSUB                RDREC                              
+4                   1006                                    LDA                 LENGTH                            
+5                   1009                                    COMP                ZERO                                
+6                   100C                                    JEQ                 ENDFIL                            
+7                   100F                                    JSUB                WRREC                              
+8                   1012                                    J                   CLOOP                              
+9                   1015                ENDFIL              LDA                 EOF                                  
+10                  1018                                    STA                 BUFFER                            
+11                  101B                                    LDA                 THREE                              
+12                  101E                                    STA                 LENGTH                            
+13                  1021                                    JSUB                WRREC                              
+14                  1024                                    LDL                 RETARD                            
+15                  1027                                    RSUB                                                        
+16                  102A                EOF                 BYTE                C'EOF'                            
+17                  102D                THREE               WORD                3                                      
+18                  1030                ZERO                WORD                0                                      
+19                  1033                RETARD              RESW                1                                      
+20                  1036                LENGTH              RESW                1                                      
+21                  1039                BUFFER              RESB                4096                                
+22                  2039                RDREC               LDX                 ZERO                                
+23                  203C                                    LDA                 ZERO                                
+24                  203F                RLOOP               TD                  INPUT                              
+25                  2042                                    JEQ                 RLOOP                              
+26                  2045                                    RD                  INPUT                              
+27                  2048                                    COMP                ZERO                                
+28                  204B                                    JEQ                 EXIT                                
+29                  204E                                    STCH                BUFFER,X                        
+30                  2051                                    TIX                 MAXLEN                            
+31                  2054                                    JLT                 RLOOP                              
+32                  2057                EXIT                STX                 LENGTH                            
+33                  205A                                    RSUB                                                        
+34                  205D                INPUT               BYTE                X'F1'                              
+35                  205E                MAXLEN              WORD                4096                                
+36                  2061                WRREC               LDX                 ZERO                                
+37                  2064                WLOOP               TD                  OUTPUT                            
+38                  2067                                    JEQ                 WLOOP                              
+39                  206A                                    LDCH                BUFFER,X                        
+40                  206D                                    WD                  OUTPUT                            
+41                  2070                                    TIX                 LENGTH                            
+42                  2073                                    JLT                 WLOOP                              
+43                  2076                                    RSUB                                                        
+44                  2079                OUTPUT              BYTE                X'05'                              
+45                  207A                                    END                 FIRST                              

@@ -1,0 +1,23 @@
+Line no.            Location            Label               Mnemonic            Operand             Comment             
+------------------------------------------------------------------------------------------------------------------------
+1                   0                   PROG12              START               0000                                
+2                   0                   P                   JSUB                COMPUTE                          
+3                   3                   FIN2                J                   FIN2                                
+4                   6                   COMPUTE             LDX                 ZERO                                
+5                   9                  LOOP                TD                  INPUT                              
+6                   C                                      JEQ                 LOOP                                
+7                   F                                      RD                  INPUT                              
+8                   12                                      COMP                FOUR                                
+9                   15                                      JEQ                 FIN                                  
+10                  18                                      STCH                BUFFER,X                        
+11                  1B                                      TIX                 HUND                                
+12                  1E                                      JLT                 LOOP                                
+13                  21                  FIN                 STX                 LENGTH                            
+14                  24                                      RSUB                                                        
+15                  27                  ZERO                WORD                0                                      
+16                  2A                  FOUR                WORD                4                                      
+17                  2D                  HUND                WORD                100                                  
+18                  30                  INPUT               BYTE                X'F3'                              
+19                  31                 BUFFER              RESB                100                                  
+20                  95                 LENGTH              RESW                1                                      
+21                  98                                     END                 P                                      
